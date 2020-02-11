@@ -7,7 +7,10 @@ class ListingsController < ApplicationController
     end
 
     def create
-        @listing = Listing.create(listing_params)
+        @listing = Listing.new(listing_params)
+        puts "---- picture----#{listing_params[:picture]}"
+        @listing.picture.attach(listing_params[:picture])
+        @listing.save
         console
         if @listing.errors.any?
             render "new"
@@ -48,6 +51,7 @@ class ListingsController < ApplicationController
     def set_listing
         id = params[:id]
         @listing = Listing.find(id)
+        puts "---listing show: #{@listing.picture.attachment.blob.inspect}"
     end
     
     def set_breeds_and_sexes
@@ -56,7 +60,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-        params.require(:listing).permit(:title, :description, :price, :deposit, :city, :state, :date_of_birth, :diet, :breed_id, :sex)
+        params.require(:listing).permit(:title, :description, :price, :deposit, :city, :state, :date_of_birth, :diet, :breed_id, :sex, :picture)
     end
 end
   
