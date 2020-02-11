@@ -1,0 +1,11 @@
+<h1>Ssssnake Listingsssssssss</h1>
+
+<% @listings.each do |listing| %>
+    <p><%= listing.title %></p>
+    <p><%= listing.description %></p>
+    <%= link_to "edit", edit_listing_path(listing.id) %>
+    <%= link_to "show", listing_path(listing.id) %>
+    <%= link_to "delete ⛔️", listing_path(listing),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+<% end %>
