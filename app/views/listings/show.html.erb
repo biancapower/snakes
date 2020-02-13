@@ -1,5 +1,6 @@
 <div class="container">
     <h1><%= @listing.title %></h1>
+    <%= image_tag @listing.picture if @listing.picture.attached? %>
     <p>Description: <%= @listing.description %></p>
     <p>Breed: <%= @listing.breed.name %></p>
     <p>Sex: <%= @listing.sex %></p>

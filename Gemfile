@@ -66,3 +66,5 @@ gem "snake_names", "~> 0.0.0"
 gem "bootstrap", "~> 4.0.0"
 
 gem 'jquery-rails'
+
+gem "aws-sdk-s3", "~> 1.60"

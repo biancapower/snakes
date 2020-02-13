@@ -1,7 +1,7 @@
 <h1>List a snake!</h1>
 
 <%= form_with(model: @listing, local: true) do |form| %>
-    <div
+    <div>
         <%= form.label :title %>
         <%= form.text_field :title %>
     </div>
@@ -44,6 +44,10 @@
             <%= form.label "sex_#{option}".to_sym, option %>
         <div>
     <% end %>
+    <div>
+        <%= form.label :picture %> <%= form.file_field :picture, accept:
+                    'image/png,image/gif,image/jpeg,image/jpg' %>
+    </div>
     <div>
         <%= form.submit %>
     </div>
