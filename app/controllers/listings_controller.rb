@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
         @listing = current_user.listings.create(listing_params)
 
         # @listing = Listing.create(listing_params)
-        console
+        # console
         if @listing.errors.any?
             set_breeds_and_sexes
             render "new"
