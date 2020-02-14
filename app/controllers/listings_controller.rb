@@ -1,15 +1,20 @@
 class ListingsController < ApplicationController
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
     before_action :set_breeds_and_sexes, only: [:new, :edit]
+    before_action :set_user_listing, only: [:edit, :update, :destroy]
+    before_action :authenticate_user!
 
     def index
         @listings = Listing.all
     end
 
     def create
-        @listing = Listing.create(listing_params)
+        @listing = current_user.listings.create(listing_params)
+
+        # @listing = Listing.create(listing_params)
         console
         if @listing.errors.any?
+            set_breeds_and_sexes
             render "new"
         else
             redirect_to listings_path
@@ -53,6 +58,15 @@ class ListingsController < ApplicationController
     def set_breeds_and_sexes
         @breeds = Breed.all
         @sexes = Listing.sexes.keys
+    end
+
+    def set_user_listing
+        id = params[:id]
+        @listing = current_user.listings.find_by_id(id)
+    
+        if @listing == nil
+            redirect_to listings_path
+        end
     end
 
     def listing_params

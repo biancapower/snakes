@@ -5,9 +5,9 @@
     <%= image_tag listing.picture if listing.picture.attached? %>
     <p><%= listing.title %></p>
     <p><%= listing.description %></p>
-    <%= link_to "edit", edit_listing_path(listing.id) %>
+    <%= link_to "edit", edit_listing_path(listing.id) if current_user.id == listing.user.id %>
     <%= link_to "show", listing_path(listing.id) %>
     <%= link_to "delete ⛔️", listing_path(listing),
               method: :delete,
-              data: { confirm: "Are you sure?" } %>
+              data: { confirm: "Are you sure?" } if current_user.id == listing.user.id %>
 <% end %>

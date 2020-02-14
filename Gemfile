@@ -68,3 +68,5 @@ gem "bootstrap", "~> 4.0.0"
 gem 'jquery-rails'
 
 gem "aws-sdk-s3", "~> 1.60"
+
+gem "devise", "~> 4.7"
