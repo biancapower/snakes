@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2020_02_13_235729) do
     t.bigint "breed_id"
     t.integer "sex"
     t.integer "price"
-    t.integer "deposit"
     t.string "city"
     t.string "state"
     t.date "date_of_birth"

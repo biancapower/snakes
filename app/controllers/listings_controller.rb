@@ -32,7 +32,7 @@ class ListingsController < ApplicationController
             line_items: [{
                 name: @listing.title,
                 description: @listing.description,
-                amount: @listing.deposit * 100,
+                amount: @listing.price * 100,
                 currency: 'aud',
                 quantity: 1,
             }],
@@ -91,7 +91,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-        params.require(:listing).permit(:title, :description, :price, :deposit, :city, :state, :date_of_birth, :diet, :breed_id, :sex, :picture)
+        params.require(:listing).permit(:title, :description, :price, :city, :state, :date_of_birth, :diet, :breed_id, :sex, :picture)
     end
 end
   
