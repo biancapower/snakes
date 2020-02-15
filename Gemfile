@@ -63,7 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "snake_names", "~> 0.0.0"
 
-gem "bootstrap", "~> 4.0.0"
+gem "bootstrap", "~> 4.3.1"
 
 gem 'jquery-rails'
 
