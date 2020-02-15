@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_235729) do
+ActiveRecord::Schema.define(version: 2020_02_15_014458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2020_02_13_235729) do
     t.bigint "breed_id"
     t.integer "sex"
     t.integer "price"
-    t.integer "deposit"
     t.string "city"
     t.string "state"
     t.date "date_of_birth"
@@ -56,8 +55,19 @@ ActiveRecord::Schema.define(version: 2020_02_13_235729) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.boolean "bought", default: false
     t.index ["breed_id"], name: "index_listings_on_breed_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "listing_id"
+    t.string "stripe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_orders_on_listing_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,4 +85,6 @@ ActiveRecord::Schema.define(version: 2020_02_13_235729) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "listings", "breeds"
   add_foreign_key "listings", "users"
+  add_foreign_key "orders", "listings"
+  add_foreign_key "orders", "users"
 end

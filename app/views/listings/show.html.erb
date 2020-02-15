@@ -7,7 +7,7 @@
     <p>Price: <%= @listing.price %></p>
 
     <button data-stripe="payment">
-        Pay Deposit <%= number_to_currency(@listing.deposit) %>
+        Buy now <%= number_to_currency(@listing.price) %>
     </button>
 
     <script src="https://js.stripe.com/v3/"></script>
